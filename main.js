@@ -1,4 +1,4 @@
-const Game = require("./game.js");
+const GameModule = require("./game.js");
 const inquirer = require("inquirer");
 
 //this function will be called recursively while game.over is false
@@ -48,7 +48,7 @@ function gameLoop(game){
 
 //creates new instance of Game and calls gameLoop on it to start play
 function startNewGame(){
-	const game = new Game();
+	const game = new GameModule.Game();
 	gameLoop(game);
 }
 

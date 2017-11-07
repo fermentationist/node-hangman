@@ -4,7 +4,8 @@
   "description": "node cli hangman game",
   "main": "main.js",
   "dependencies": {
-    "inquirer": "^3.3.0"
+    "inquirer": "^3.3.0",
+    "tmp": "0.0.33"
   },
   "devDependencies": {},
   "scripts": {
