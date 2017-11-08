@@ -5,6 +5,10 @@ const inquirer = require("inquirer");
 function gameLoop(game){
 	//clear screen
 	process.stdout.write('\033c');
+	//title
+	console.log("================| Programming Quotes Hangman |================\n\n");
+	//author
+	console.log("author of quote: " + game.puzzle.quoteAuthor);
 	//show puzzle
 	console.log("\n" + game.display() + "\n");
 	//show guessed letters
@@ -18,7 +22,7 @@ function gameLoop(game){
 			message: "Guess a letter",
 			name: "guess"
 		}).then(function(answer){
-			game.guess(answer.guess);
+			game.guess(answer.guess.toLowerCase());
 			gameLoop(game);
 		});
 	}else{

@@ -10,12 +10,15 @@ const GameModule = (function(){
 		this.display = function(){
 			return this.puzzle.display();
 		}
-
 		this.guess = function(char){
 			let correctGuess = false;
 			let allGuessed = true;
+			if(char == "quit"){
+				this.over = true;
+				return process.stdout.write('\033c');
+			}
 			//restrict guess to one character
-			char = char.toLowerCase().slice(0,1);
+			char = char.slice(0,1);
 			//data validation- exit function if invalid
 			if(!/[^_\d\W]/.test(char)){
 				return;

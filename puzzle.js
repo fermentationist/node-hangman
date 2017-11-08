@@ -1,13 +1,12 @@
 const PuzzleModule = (function(){
+	const quotes = require("./quotes.js");
 	const LetterModule = require ("./letter.js");
 	function Puzzle(){
 		const that = this;
-		this.randomPuzzle = function (){
-			//maybe use api call for content?
-			return "Careful man, there's a beverage here!";
-		}
 		let displayArray = [];
-		this.currentPuzzle = this.randomPuzzle ();
+		let randQuote = randomQuote();
+		this.quoteAuthor = randQuote.author;
+		this.currentPuzzle = randQuote.quote;
 		this.charArray = this.currentPuzzle.split ("");
 		this.charArray.forEach (function (char, i){
 			let letter = new LetterModule.Letter(char);
@@ -21,6 +20,14 @@ const PuzzleModule = (function(){
 			})
 			return updated.join(" ");
 		}
+	}
+	function randomQuote(){
+		let length = quotes.length;
+		let rnd = Math.floor(Math.random() * (length + 1));
+		let quote = quotes[rnd].quote;
+		let author = quotes[rnd].author;
+		return {quote:quote, author:author}
+		// return "Careful man, there's a beverage here!";
 	}
 	return {Puzzle: Puzzle}
 })();
